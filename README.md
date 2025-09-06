@@ -16,3 +16,6 @@ Edit the boot configuration to enable memory cgroups:
 
 ```bash
 sudo nano /boot/cmdline.txt
+
+Add the following parameters to the end of the existing line (don't create a new line):
+cgroup_memory=1 cgroup_enable=memory
