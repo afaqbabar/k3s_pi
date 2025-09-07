@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: traefik
+  name: traefik
+  namespace: traefik-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: traefik
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: traefik
+    spec:
+      containers:
+      - image: traefik:v2.10
+        name: traefik
+        resources: {}
+status: {}
