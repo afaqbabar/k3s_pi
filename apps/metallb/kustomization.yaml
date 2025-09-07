@@ -1,3 +1,0 @@
-resources:
-  - namespace.yaml
-  - metallb-config.yaml   # or your other manifests
