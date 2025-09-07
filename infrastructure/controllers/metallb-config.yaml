@@ -1,0 +1,20 @@
+# File: infrastructure/controllers/metallb-config.yaml
+# MetalLB IP Pool Configuration
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: default-pool
+  namespace: metallb-system
+spec:
+  # IP range for MetalLB LoadBalancer services
+  addresses:
+  - 192.168.1.201-192.168.1.210
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: default
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+  - default-pool
