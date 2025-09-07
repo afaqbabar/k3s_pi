@@ -1,0 +1,24 @@
+# File: apps/traefik-dashboard/ingress.yaml
+# Traefik dashboard via LoadBalancer
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: traefik-dashboard
+  namespace: traefik-system
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.rule: Host(`traefik.pi.local`)
+spec:
+  rules:
+  - host: traefik.pi.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: traefik
+            port:
+              number: 9000
